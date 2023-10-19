@@ -93,7 +93,7 @@ def main():
     load_dotenv()
 
     # Set the head of streamlit UI
-    st.title("Your Insurance Assistant! 🛡️🚑🏥")
+    st.title("Your InsureAssist! 🛡️🚑🏥")
     
     # set the cutom markdown for sidebar
     st.markdown("""
@@ -118,7 +118,7 @@ def main():
         # Initialize the main chat history
         if "messages" not in st.session_state:
             st.session_state.messages = []
-        # Initialize the varibale to store the hostory of convesations for expandable buttons in the side bar.
+        # Initialize the varibale to store the chat sessions of conversations for expandable buttons in the side bar.
         if "expander_history" not in st.session_state:
             st.session_state.expander_history = []    
         # Set a default model
@@ -160,7 +160,7 @@ def main():
             ''',
             unsafe_allow_html=True
         )
-        
+
         # Loop to create expandable buttons for old chats same as chatGPT
         for index, item in enumerate(st.session_state.expander_history):
             if item != []:
@@ -205,7 +205,7 @@ def main():
     
 
     # Accept user input
-    if prompt := st.chat_input("What is up?"):
+    if prompt := st.chat_input("Welcome to InsureAssist! How can I help you?"):
 
         relevant_context = get_context(index_file_path, prompt, masterdata_df_file_path, 2)  
         prompt_context = "<question>{"+prompt+"}<question/>, <context>{"+relevant_context+"}<context/>"        
